@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Music, Users, Settings, Calendar, Shield, Bot } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -23,7 +22,7 @@ const Dashboard = () => {
   const renderContent = () => {
     switch (activeTab) {
       case 'music':
-        return <MusicPlayer serverId={serverId} />;
+        return <MusicPlayer />;
       case 'stats':
         return <ServerStats serverId={serverId} />;
       case 'reminders':
@@ -33,7 +32,7 @@ const Dashboard = () => {
       case 'settings':
         return <div className="p-6 text-white">Settings panel coming soon...</div>;
       default:
-        return <MusicPlayer serverId={serverId} />;
+        return <MusicPlayer />;
     }
   };
 
