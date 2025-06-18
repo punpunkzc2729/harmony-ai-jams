@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Music, Users, Settings, Calendar, Shield, Bot } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MusicPlayer } from '@/components/MusicPlayer';
 import { ServerStats } from '@/components/ServerStats';
@@ -10,6 +10,7 @@ import { SecurityAlerts } from '@/components/SecurityAlerts';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('music');
+  const [serverId] = useState('default'); // This could be set from user selection or URL params
 
   const navItems = [
     { id: 'music', label: 'Music Player', icon: Music },
@@ -22,17 +23,17 @@ const Dashboard = () => {
   const renderContent = () => {
     switch (activeTab) {
       case 'music':
-        return <MusicPlayer />;
+        return <MusicPlayer serverId={serverId} />;
       case 'stats':
-        return <ServerStats />;
+        return <ServerStats serverId={serverId} />;
       case 'reminders':
-        return <RemindersPanel />;
+        return <RemindersPanel serverId={serverId} />;
       case 'security':
-        return <SecurityAlerts />;
+        return <SecurityAlerts serverId={serverId} />;
       case 'settings':
-        return <div className="p-6">Settings panel coming soon...</div>;
+        return <div className="p-6 text-white">Settings panel coming soon...</div>;
       default:
-        return <MusicPlayer />;
+        return <MusicPlayer serverId={serverId} />;
     }
   };
 
